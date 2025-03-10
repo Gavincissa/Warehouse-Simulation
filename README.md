@@ -37,3 +37,5 @@ The initial implementation will focus on setting up the warehouse structure and 
 2. Open the project in your preferred IDE.
 3. Compile and run the `Main.java` file.
 4. Modify classes under `models/` to customize behavior.
+
+Note: This project is a work-in-progress and it is currently only designed to demonstrate basic functions at a low level
