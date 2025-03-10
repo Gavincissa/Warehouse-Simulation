@@ -29,6 +29,10 @@ The initial implementation will focus on setting up the warehouse structure and 
 - **Multithreading**: Java Executors & ThreadPool
 - **GUI Development** (Future): JavaFX / Swing
 
+## Updates to Current Documentation
+- Project is undergoing more in-depth literary research and the overall literature review document has been cleaned up to fit specific requirements
+- UML diagram has underwent recent changed to accommodate more complex concepts and the usage of efficiency and quality attributes in key functions
+
 ## Setup Instructions
 1. Clone the repository:
    ```sh
