@@ -8,5 +8,13 @@ public abstract class Manager {
     }
 
     public abstract void relayTask(String task);
+
+    public String getName() {
+        return name;
+    }
+
+    public double getEfficiency() {
+        return efficiency;
+    }
 }
 
