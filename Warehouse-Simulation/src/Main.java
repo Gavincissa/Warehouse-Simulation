@@ -194,6 +194,47 @@ class Simulation {
         scheduleTask(new PalletSpecialist(psName, psEfficiency), "Send Shipment", 15, SEND_SHIPMENT_QUOTA, logisticsManager);
     }
 
+    public void getHardCodedData(){
+        warehouse = new Warehouse("Georgia", 10000);
+
+        ORDER_PICK_QUOTA = 75;
+        ITEM_RETURN_QUOTA = 50;
+        RECEIVE_SHIPMENT_QUOTA = 25;
+        SEND_SHIPMENT_QUOTA = 25;
+
+        PALLET_MOVE_QUOTA = RECEIVE_SHIPMENT_QUOTA;
+        STOCK_UPDATE_QUOTA = ITEM_RETURN_QUOTA;
+        ORDER_PACK_QUOTA = ORDER_PICK_QUOTA;
+
+        inventoryManager = new InventoryManager("Xavier", 50.0 / 100);
+        logisticsManager = new LogisticsManager("Reece", 50.0 / 100);
+        ecommerceManager = new ECommerceManager("Olivia", 50.0 / 100);
+
+        String foName = "Brett";
+        double foEfficiency = 50.0;
+
+        String pickerName = "Zach";
+        double pickerEfficiency = 50.0;
+
+        String packerName = "Tyler";
+        double packerEfficiency = 50.0;
+
+        String IAName = "Ashlyn";
+        double IAEfficiency = 50.0;
+
+        String psName = "Alec";
+        double psEfficiency = 50.0;
+
+        scheduleTask(new ForkliftOperator(foName, foEfficiency), "Move Pallets", 6, PALLET_MOVE_QUOTA, logisticsManager);
+        scheduleOrderPicking(new OrderPicker(pickerName, pickerEfficiency), ORDER_PICK_QUOTA, ecommerceManager);
+        scheduleOrderPacking(new OrderPacker(packerName, packerEfficiency), ORDER_PACK_QUOTA, ecommerceManager);
+        scheduleTask(new InventoryAssistant(IAName, IAEfficiency), "Update Stock", 3, STOCK_UPDATE_QUOTA, inventoryManager);
+        scheduleTask(new InventoryAssistant(IAName, IAEfficiency), "Put Item Back", 3, ITEM_RETURN_QUOTA, inventoryManager);
+        scheduleTask(new ForkliftOperator(foName, foEfficiency), "Receive Shipment", 12, RECEIVE_SHIPMENT_QUOTA, logisticsManager);
+        scheduleTask(new PalletSpecialist(psName, psEfficiency), "Send Shipment", 15, SEND_SHIPMENT_QUOTA, logisticsManager);
+
+    }
+
     public void startSimulation() {
         startTime = System.currentTimeMillis();
         System.out.println("\n=========================================");
@@ -204,7 +245,7 @@ class Simulation {
     }
 
     private void scheduleRandomPowerOutage() {
-        int delay = random.nextInt(30) + 10;
+        int delay = random.nextInt(100) + 40;
 
         scheduler.schedule(() -> {
             warehouse.powerOutage();
